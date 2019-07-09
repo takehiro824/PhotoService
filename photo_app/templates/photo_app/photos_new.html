@@ -1,0 +1,27 @@
+{% extends 'photo_app/base.html' %}
+
+{% block content %}
+
+<div>
+    <a href="{% url 'photo_app:index' %}">ホームに戻る</a>
+</div>
+
+<form action="{% url 'photo_app:photos_new' %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <table>
+        <tr>
+            <th>タイトル</th>
+            <td>{{ form.title }}</td>
+        </tr>
+        <tr>
+            <th>コメント</th>
+            <td>{{ form.comment }}</td>
+        </tr>
+        <tr>
+            <th>画像</th>
+            <td>{{ form.image }}</td>
+        </tr>
+    </table>
+    <button type="submit" class="btn">保存</button>
+</form>
+
+{% endblock %}
